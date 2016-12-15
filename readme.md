@@ -16,6 +16,25 @@ Installation with bower
 -------
 To install plugin using bower use command <code>bower install tinymce-placeholder-attribute</code>
 
+Dynamically load the plugin
+-------
+Most people nowaday will most probably load TinyMCE via CDN, e.g. like this in their index.htm head:
+
+`<script src='//cdn.tinymce.com/4/tinymce.min.js'></script>`
+
+If you now want to add this plugin, then you must add the plugin to the tinymce.configuration plugin list with a leading minus and then you can dynamically load the plugin from another location afterward:
+
+    tinymce.init({
+      selector: "#textareaid',
+      plugins: [
+        'advlist autolink lists link image -placeholder'   // see the minus before placeholder plugin name!
+      ]
+    })
+    .then(function() {
+      tinymce.PluginManager.load('placeholder', '/js/tinymce/plugins/tinymce-placeholder.plugin.js');
+    });
+
+
 Example
 -------
 
